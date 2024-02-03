@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.Application", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.API", "TelaCompro.API\TelaCompro.API.csproj", "{7F0801EF-4D64-4D9A-BA15-5AC6A6A20307}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.ApplicationTests", "Tests\TelaCompro.ApplicationTests\TelaCompro.ApplicationTests.csproj", "{A006FDBD-996C-4864-B414-42FEE52C1105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.InfrastructureTests", "Tests\TelaCompro.InfrastructureTests\TelaCompro.InfrastructureTests.csproj", "{2D5E492D-1395-4A4B-B3B5-143C755286BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,8 +39,23 @@ Global
 		{7F0801EF-4D64-4D9A-BA15-5AC6A6A20307}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F0801EF-4D64-4D9A-BA15-5AC6A6A20307}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F0801EF-4D64-4D9A-BA15-5AC6A6A20307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A006FDBD-996C-4864-B414-42FEE52C1105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A006FDBD-996C-4864-B414-42FEE52C1105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A006FDBD-996C-4864-B414-42FEE52C1105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A006FDBD-996C-4864-B414-42FEE52C1105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D5E492D-1395-4A4B-B3B5-143C755286BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5E492D-1395-4A4B-B3B5-143C755286BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5E492D-1395-4A4B-B3B5-143C755286BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5E492D-1395-4A4B-B3B5-143C755286BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A006FDBD-996C-4864-B414-42FEE52C1105} = {4FFD8C1A-26F0-45FC-86CB-BFAD23672F4B}
+		{2D5E492D-1395-4A4B-B3B5-143C755286BA} = {4FFD8C1A-26F0-45FC-86CB-BFAD23672F4B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5B10CE1-DFBC-4B89-9E22-781D7A9CC5B4}
 	EndGlobalSection
 EndGlobal
