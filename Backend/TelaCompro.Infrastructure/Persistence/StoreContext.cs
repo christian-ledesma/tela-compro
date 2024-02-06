@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TelaCompro.Domain.Entities;
 
-namespace TelaCompro.Infrastructure.Data
+namespace TelaCompro.Infrastructure.Persistence
 {
     public class StoreContext : DbContext
     {
         public StoreContext(DbContextOptions<StoreContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<User> Users { get; set; }
