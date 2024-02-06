@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TelaCompro.Domain.Entities;
+using TelaCompro.Domain.Repositories;
 using TelaCompro.Infrastructure.Persistence;
+using TelaCompro.Infrastructure.Repositories;
 
 namespace TelaCompro.Infrastructure.Extensions
 {
@@ -14,6 +16,13 @@ namespace TelaCompro.Infrastructure.Extensions
             {
                 options.UseSqlServer(configuration.GetConnectionString("Store"));
             });
+            return services;
+        }
+
+        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
             return services;
         }
 

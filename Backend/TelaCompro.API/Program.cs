@@ -12,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDatabase(builder.Configuration);
+builder.Services.AddRepositories();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
