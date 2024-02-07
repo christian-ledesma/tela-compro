@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TelaCompro.Application\TelaCompro.Application.csproj" />
     <ProjectReference Include="..\TelaCompro.Infrastructure\TelaCompro.Infrastructure.csproj" />
   </ItemGroup>
 
