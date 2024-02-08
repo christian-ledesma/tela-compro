@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TelaCompro.Application.Extensions;
 using TelaCompro.Infrastructure.Extensions;
 using TelaCompro.Infrastructure.Persistence;
 
@@ -13,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDatabase(builder.Configuration);
 builder.Services.AddRepositories();
+builder.Services.AddUseCases();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
