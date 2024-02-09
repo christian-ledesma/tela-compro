@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
+﻿using TelaCompro.Application.Extensions;
 using TelaCompro.Application.Requests.User;
 using TelaCompro.Application.Responses;
 using TelaCompro.Application.Services.Interfaces;
@@ -29,7 +28,7 @@ namespace TelaCompro.Application.Services.Implementations
                     throw new Exception("Proporcionar contraseña");
                 }
 
-                var password = HashPassword(request.Password);
+                var password = request.Password.Hash();
                 if (user.Password != password)
                 {
                     throw new Exception("Contraseña incorrecta");
@@ -47,7 +46,7 @@ namespace TelaCompro.Application.Services.Implementations
         {
             try
             {
-                var hashedPassword = HashPassword(request.Password!);
+                var password = request.Password?.Hash();
                 var user = new User
                 {
                     Name = request.Name,
@@ -55,7 +54,7 @@ namespace TelaCompro.Application.Services.Implementations
                     SecondLastName = request.SecondLastname,
                     PhoneNumber = request.PhoneNumber,
                     Email = request.Email,
-                    Password = hashedPassword
+                    Password = password
                 };
                 await _userRepository.Create(user);
                 return Result.Success();
@@ -64,21 +63,6 @@ namespace TelaCompro.Application.Services.Implementations
             {
                 return Result.Failure(ex.Message);
             }
-        }
-
-        private string HashPassword(string password)
-        {
-            using var sha256Hash = SHA256.Create();
-
-            // CIFRAMOS CONTRASEÑA PARA MAYOR SEGURIDAD
-            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-            var builder = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                builder.Append(bytes[i].ToString("x2")).ToString();
-            }
-
-            return builder.ToString();
         }
     }
 }
