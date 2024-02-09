@@ -17,6 +17,32 @@ namespace TelaCompro.Application.Services.Implementations
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
         }
 
+        public async Task<Result> Login(LoginDto request)
+        {
+            try
+            {
+                var query = await _userRepository.GetQueryable();
+                var user = query.FirstOrDefault(x => x.Email == request.Email) ?? throw new Exception("Usuario no encontrado");
+
+                if (request.Password is null)
+                {
+                    throw new Exception("Proporcionar contraseña");
+                }
+
+                var password = HashPassword(request.Password);
+                if (user.Password != password)
+                {
+                    throw new Exception("Contraseña incorrecta");
+                }
+
+                return Result.Success();
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(ex.Message);
+            }
+        }
+
         public async Task<Result> Register(RegisterDto request)
         {
             try

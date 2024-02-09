@@ -41,6 +41,12 @@ namespace TelaCompro.Infrastructure.Repositories
             return entities;
         }
 
+        public Task<IQueryable<T>> GetQueryable()
+        {
+            var queryable = _context.Set<T>().AsQueryable<T>();
+            return Task.FromResult(queryable);
+        }
+
         public async Task Update(T entity)
         {
             _context.Update(entity);

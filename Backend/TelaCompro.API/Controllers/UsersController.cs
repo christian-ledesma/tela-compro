@@ -23,5 +23,13 @@ namespace TelaCompro.API.Controllers
             var response = await _userService.Register(request);
             return response;
         }
+
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<Result> Login(LoginDto request)
+        {
+            var response = await _userService.Login(request);
+            return response;
+        }
     }
 }
