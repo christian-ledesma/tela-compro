@@ -7,5 +7,6 @@ namespace TelaCompro.Application.Services.Interfaces
     {
         Task<Result> Register(RegisterDto request);
         Task<Result> Login(LoginDto request);
+        Task<Result> UpdateUser(UpdateUserDto request);
     }
 }

@@ -64,5 +64,30 @@ namespace TelaCompro.Application.Services.Implementations
                 return Result.Failure(ex.Message);
             }
         }
+
+        public async Task<Result> UpdateUser(UpdateUserDto request)
+        {
+            try
+            {
+                var user = await _userRepository.Get(request.Id);
+                if (user is null)
+                {
+                    throw new Exception("Usuario no encontrado");
+                }
+
+                user.Name = request.Name;
+                user.FirstLastName = request.FirstLastName;
+                user.SecondLastName = request.SecondLastName;
+                user.PhoneNumber = request.PhoneNumber;
+                user.Email = request.Email;
+
+                await _userRepository.Update(user);
+                return Result.Success();
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(ex.Message);
+            }
+        }
     }
 }

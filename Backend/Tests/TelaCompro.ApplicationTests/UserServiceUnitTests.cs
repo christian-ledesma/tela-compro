@@ -17,7 +17,7 @@ namespace TelaCompro.Application.Tests
             _userRepository = new Mock<IRepository<User>>();
             _userService = new UserService(_userRepository.Object);
 
-            var users = new List<User>() { new() { Email = "test@email.com", Password = "123456".Hash() } };
+            var users = new List<User>() { new() { Id = 1, Email = "test@email.com", Password = "123456".Hash() } };
             var query = users.AsQueryable();
 
             _userRepository.Setup(x => x.GetQueryable()).Returns(Task.FromResult(query));
@@ -116,6 +116,49 @@ namespace TelaCompro.Application.Tests
             Assert.True(response.IsSuccess);
             Assert.Null(response.Error);
             _userRepository.Verify(x => x.Create(It.IsAny<User>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task UpdateUser_NonExistingUser_ShouldFail()
+        {
+            // Arrange
+            var request = new UpdateUserDto
+            {
+                Id = 0
+            };
+
+            // Act
+            var response = await _userService.UpdateUser(request);
+
+            // Asset
+            Assert.False(response.IsSuccess);
+            Assert.NotNull(response.Error);
+        }
+
+        [Fact]
+        public async Task UpdateUser_ShouldSucceed()
+        {
+            // Arrange
+            var existingUser = new User
+            {
+                Id = 1,
+                Email = "test@email.com"
+            };
+            var request = new UpdateUserDto
+            {
+                Id = 1,
+                Email = "newmail@test.com"
+            };
+            _userRepository.Setup(x => x.Get(request.Id))
+                .Returns(Task.FromResult<User?>(existingUser));
+
+            // Act
+            var response = await _userService.UpdateUser(request);
+
+            // Asset
+            Assert.True(response.IsSuccess);
+            Assert.Null(response.Error);
+            _userRepository.Verify(x => x.Update(It.IsAny<User>()), Times.Once);
         }
     }
 }
