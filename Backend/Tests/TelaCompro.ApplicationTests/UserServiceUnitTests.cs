@@ -5,7 +5,7 @@ using TelaCompro.Application.Services.Implementations;
 using TelaCompro.Domain.Entities;
 using TelaCompro.Domain.Repositories;
 
-namespace TelaCompro.ApplicationTests
+namespace TelaCompro.Application.Tests
 {
     public class UserServiceUnitTests
     {

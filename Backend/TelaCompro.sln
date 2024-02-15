@@ -5,17 +5,17 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4FFD8C1A-26F0-45FC-86CB-BFAD23672F4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.Domain", "TelaCompro.Domain\TelaCompro.Domain.csproj", "{3DE9AE09-2CC5-4CEF-A24D-2B7D61D2A9CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelaCompro.Domain", "TelaCompro.Domain\TelaCompro.Domain.csproj", "{3DE9AE09-2CC5-4CEF-A24D-2B7D61D2A9CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.Infrastructure", "TelaCompro.Infrastructure\TelaCompro.Infrastructure.csproj", "{9E86C1F1-CA2E-44B5-B63D-2C36D5CF40A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelaCompro.Infrastructure", "TelaCompro.Infrastructure\TelaCompro.Infrastructure.csproj", "{9E86C1F1-CA2E-44B5-B63D-2C36D5CF40A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.Application", "TelaCompro.Application\TelaCompro.Application.csproj", "{A867556D-0582-43AA-BA09-7AD6AE2E54F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelaCompro.Application", "TelaCompro.Application\TelaCompro.Application.csproj", "{A867556D-0582-43AA-BA09-7AD6AE2E54F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.API", "TelaCompro.API\TelaCompro.API.csproj", "{7F0801EF-4D64-4D9A-BA15-5AC6A6A20307}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelaCompro.API", "TelaCompro.API\TelaCompro.API.csproj", "{7F0801EF-4D64-4D9A-BA15-5AC6A6A20307}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.ApplicationTests", "Tests\TelaCompro.ApplicationTests\TelaCompro.ApplicationTests.csproj", "{A006FDBD-996C-4864-B414-42FEE52C1105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelaCompro.Application.Tests", "Tests\TelaCompro.ApplicationTests\TelaCompro.Application.Tests.csproj", "{A006FDBD-996C-4864-B414-42FEE52C1105}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelaCompro.InfrastructureTests", "Tests\TelaCompro.InfrastructureTests\TelaCompro.InfrastructureTests.csproj", "{2D5E492D-1395-4A4B-B3B5-143C755286BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelaCompro.Infrastructure.Tests", "Tests\TelaCompro.InfrastructureTests\TelaCompro.Infrastructure.Tests.csproj", "{2D5E492D-1395-4A4B-B3B5-143C755286BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
