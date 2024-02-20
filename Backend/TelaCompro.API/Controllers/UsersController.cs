@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TelaCompro.Application.Common;
 using TelaCompro.Application.Requests.User;
-using TelaCompro.Application.Responses;
 using TelaCompro.Application.Services.Interfaces;
 
 namespace TelaCompro.API.Controllers

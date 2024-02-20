@@ -9,6 +9,7 @@ namespace TelaCompro.Application.Extensions
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProductService, ProductService>();
 
             return services;
         }

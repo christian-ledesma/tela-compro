@@ -1,5 +1,5 @@
-﻿using TelaCompro.Application.Requests.User;
-using TelaCompro.Application.Responses;
+﻿using TelaCompro.Application.Common;
+using TelaCompro.Application.Requests.User;
 
 namespace TelaCompro.Application.Services.Interfaces
 {

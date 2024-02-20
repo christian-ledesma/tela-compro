@@ -1,4 +1,4 @@
-﻿namespace TelaCompro.Application.Responses
+﻿namespace TelaCompro.Application.Common
 {
     public class Result<T>
     {

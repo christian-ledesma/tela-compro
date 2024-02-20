@@ -1,6 +1,6 @@
-﻿using TelaCompro.Application.Extensions;
+﻿using TelaCompro.Application.Common;
+using TelaCompro.Application.Extensions;
 using TelaCompro.Application.Requests.User;
-using TelaCompro.Application.Responses;
 using TelaCompro.Application.Services.Interfaces;
 using TelaCompro.Domain.Entities;
 using TelaCompro.Domain.Repositories;
