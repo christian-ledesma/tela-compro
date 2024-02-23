@@ -8,7 +8,7 @@ namespace TelaCompro.Application.Services.Interfaces
     {
         Task<Result<IEnumerable<Product>>> ListProducts();
         Task<Result> UploadProduct(UploadProductDto request);
-        Task<Result> UpdateProduct(CreateProductDto request);
+        Task<Result> UpdateProduct(UpdateProductDto request);
         Task<Result> DeleteProduct(int id);
         Task<Result> BuyProduct(BuyProductDto request);
     }

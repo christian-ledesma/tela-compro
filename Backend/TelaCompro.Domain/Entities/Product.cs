@@ -7,6 +7,7 @@
         public string? Description { get; set; }
         public string? Size { get; set; }
         public decimal Price { get; set; }
+        public byte[]? Image { get; set; }
         public User? Owner { get; set; }
         public User? Buyer { get; set; }
         public Category? Category { get; set; }

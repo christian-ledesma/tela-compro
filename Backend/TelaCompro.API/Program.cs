@@ -21,11 +21,7 @@ using (var scope = app.Services.CreateScope())
 {
     StoreContext context = scope.ServiceProvider.GetRequiredService<StoreContext>();
     await context.Database.MigrateAsync();
-    var seedIsActive = builder.Configuration.GetValue<bool>("EntityFramework:SeedData");
-    if (seedIsActive)
-    {
-        InfrastructureServiceCollection.Seed(context);
-    }
+    context.Seed();
 }
 
 // Configure the HTTP request pipeline.

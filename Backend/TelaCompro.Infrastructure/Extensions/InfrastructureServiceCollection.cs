@@ -26,58 +26,70 @@ namespace TelaCompro.Infrastructure.Extensions
             return services;
         }
 
-        public static void Seed(StoreContext context)
+        public static StoreContext Seed(this StoreContext context)
         {
-            var brands = new List<Brand>
+            if (!context.Brands.Any())
             {
-                new()
+                var brands = new List<Brand>
                 {
-                    Name = "Hollister",
-                    IsLuxury = false
-                },
-                new()
-                {
-                    Name = "Prada",
-                    IsLuxury = true
-                },
-                new()
-                {
-                    Name = "Bershka",
-                    IsLuxury = false
-                }
-            };
+                    new()
+                    {
+                        Name = "Hollister",
+                        IsLuxury = false
+                    },
+                    new()
+                    {
+                        Name = "Prada",
+                        IsLuxury = true
+                    },
+                    new()
+                    {
+                        Name = "Bershka",
+                        IsLuxury = false
+                    }
+                };
 
-            context.Brands.AddRange(brands);
+                context.Brands.AddRange(brands);
+                context.SaveChanges();
+            }
 
-            var categories = new List<Category>
+            if (!context.Categories.Any())
             {
-                new()
+                var categories = new List<Category>
                 {
-                    Name = "Shirts"
-                },
-                new()
-                {
-                    Name = "Pants"
-                }
-            };
+                    new()
+                    {
+                        Name = "Shirts"
+                    },
+                    new()
+                    {
+                        Name = "Pants"
+                    }
+                };
 
-            context.Categories.AddRange(categories);
+                context.Categories.AddRange(categories);
+                context.SaveChanges();
+            }
 
-            var tags = new List<Tag>
+            if (!context.Tags.Any())
             {
-                new()
+                var tags = new List<Tag>
                 {
-                    Name = "#Collection",
-                },
-                new()
-                {
-                    Name = "#Fashion"
-                }
-            };
+                    new()
+                    {
+                        Name = "#Collection",
+                    },
+                    new()
+                    {
+                        Name = "#Fashion"
+                    }
+                };
 
-            context.Tags.AddRange(tags);
+                context.Tags.AddRange(tags);
+                context.SaveChanges(); 
+            }
 
-            context.SaveChanges();
+            return context;
         }
     }
 }
