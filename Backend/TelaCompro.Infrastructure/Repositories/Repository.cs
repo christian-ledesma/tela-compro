@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using TelaCompro.Domain.Repositories;
 using TelaCompro.Infrastructure.Persistence;
 
@@ -38,6 +39,14 @@ namespace TelaCompro.Infrastructure.Repositories
         public async Task<IEnumerable<T>> GetAll()
         {
             var entities = await _context.Set<T>().ToListAsync();
+            return entities;
+        }
+
+        public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includes)
+        {
+            var query = _context.Set<T>().AsQueryable<T>();
+            query = includes.Aggregate(query, (current, include) => current.Include(include));
+            var entities = await query.ToListAsync();
             return entities;
         }
 
