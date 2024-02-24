@@ -25,13 +25,13 @@ namespace TelaCompro.Application.Services.Implementations
 
                 if (request.Password is null)
                 {
-                    throw new Exception("Proporcionar contraseña");
+                    return Result.Failure("Proporcionar contraseña");
                 }
 
                 var password = request.Password.Hash();
                 if (user.Password != password)
                 {
-                    throw new Exception("Contraseña incorrecta");
+                    return Result.Failure("Contraseña incorrecta");
                 }
 
                 return Result.Success();
@@ -72,7 +72,7 @@ namespace TelaCompro.Application.Services.Implementations
                 var user = await _userRepository.Get(request.Id);
                 if (user is null)
                 {
-                    throw new Exception("Usuario no encontrado");
+                    return Result.Failure("Usuario no encontrado");
                 }
 
                 user.Name = request.Name;

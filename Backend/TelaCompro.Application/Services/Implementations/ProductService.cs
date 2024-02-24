@@ -37,12 +37,12 @@ namespace TelaCompro.Application.Services.Implementations
 
                 if (product is null)
                 {
-                    throw new Exception("Producto no encontrado");
+                    return Result.Failure("Producto no encontrado");
                 }
 
                 if (buyer is null)
                 {
-                    throw new Exception("Comprador no encontrado");
+                    return Result.Failure("Comprador no encontrado");
                 }
 
                 product.Buyer = buyer;
@@ -103,7 +103,7 @@ namespace TelaCompro.Application.Services.Implementations
                 var product = await _productRepository.Get(request.Id);
                 if (product is null)
                 {
-                    throw new Exception("Producto no encontrado");
+                    return Result.Failure("Producto no encontrado");
                 }
 
                 var tagList = await _tagRepository.GetQueryable();
