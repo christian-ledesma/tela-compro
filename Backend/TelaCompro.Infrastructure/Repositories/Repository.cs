@@ -14,13 +14,13 @@ namespace TelaCompro.Infrastructure.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task Create(T entity)
+        public virtual async Task Create(T entity)
         {
             await _context.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public virtual async Task Delete(int id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
             if (entity is not null)
@@ -30,19 +30,19 @@ namespace TelaCompro.Infrastructure.Repositories
             }
         }
 
-        public async Task<T?> Get(int id)
+        public virtual async Task<T?> Get(int id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
             return entity;
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             var entities = await _context.Set<T>().ToListAsync();
             return entities;
         }
 
-        public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includes)
+        public virtual async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includes)
         {
             var query = _context.Set<T>().AsQueryable<T>();
             query = includes.Aggregate(query, (current, include) => current.Include(include));
@@ -50,13 +50,13 @@ namespace TelaCompro.Infrastructure.Repositories
             return entities;
         }
 
-        public Task<IQueryable<T>> GetQueryable()
+        public virtual Task<IQueryable<T>> GetQueryable()
         {
             var queryable = _context.Set<T>().AsQueryable<T>();
             return Task.FromResult(queryable);
         }
 
-        public async Task Update(T entity)
+        public virtual async Task Update(T entity)
         {
             _context.Update(entity);
             await _context.SaveChangesAsync();

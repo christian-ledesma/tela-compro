@@ -24,6 +24,14 @@ namespace TelaCompro.API.Controllers
             return response;
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<Result<ProductDto>> Get(int id)
+        {
+            var response = await _productService.GetProduct(id);
+            return response;
+        }
+
         [HttpPost]
         public async Task<Result> Upload(UploadProductDto request)
         {
@@ -47,10 +55,10 @@ namespace TelaCompro.API.Controllers
         }
 
         [HttpPost]
-        [Route("{id}/[action]/{buyerId}")]
-        public async Task<Result> Buy(int id, int buyerId)
+        [Route("{id}/[action]")]
+        public async Task<Result> Buy(int id, BuyProductDto request)
         {
-            var response = await _productService.BuyProduct(id, buyerId);
+            var response = await _productService.BuyProduct(id, request);
             return response;
         }
     }

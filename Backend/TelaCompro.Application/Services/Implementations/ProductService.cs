@@ -9,13 +9,13 @@ namespace TelaCompro.Application.Services.Implementations
 {
     public class ProductService : IProductService
     {
-        private readonly IRepository<Product> _productRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IRepository<Brand> _brandRepository;
         private readonly IRepository<Category> _categoryRepository;
         private readonly IRepository<Tag> _tagRepository;
         private readonly IRepository<User> _userRepository;
 
-        public ProductService(IRepository<Product> productRepository,
+        public ProductService(IProductRepository productRepository,
             IRepository<Brand> brandRepository,
             IRepository<Category> categoryRepository,
             IRepository<Tag> tagRepository,
@@ -28,12 +28,12 @@ namespace TelaCompro.Application.Services.Implementations
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
         }
 
-        public async Task<Result> BuyProduct(int productId, int buyerId)
+        public async Task<Result> BuyProduct(int productId, BuyProductDto request)
         {
             try
             {
                 var product = await _productRepository.Get(productId);
-                var buyer = await _userRepository.Get(buyerId);
+                var buyer = await _userRepository.Get(request.BuyerId);
 
                 if (product is null)
                 {
@@ -69,6 +69,40 @@ namespace TelaCompro.Application.Services.Implementations
             }
         }
 
+        public async Task<Result<ProductDto>> GetProduct(int id)
+        {
+            try
+            {
+                var p = await _productRepository.Get(id);
+
+                if (p is null)
+                {
+                    return Result<ProductDto>.Failure("Producto no encontrado");
+                }
+
+                var product = new ProductDto
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Size = p.Size,
+                    Price = p.Price,
+                    Image = p.Image,
+                    Owner = p.Owner?.Name,
+                    Buyer = p.Buyer?.Name,
+                    Category = p.Category?.Name,
+                    Brand = p.Brand?.Name,
+                    Tags = p.Tags?.Select(x => x.Name)!
+                };
+
+                return Result<ProductDto>.Success(product);
+            }
+            catch (Exception ex)
+            {
+                return Result<ProductDto>.Failure(ex.Message);
+            }
+        }
+
         public async Task<Result<IEnumerable<ProductDto>>> ListProducts()
         {
             try
@@ -82,11 +116,11 @@ namespace TelaCompro.Application.Services.Implementations
                     Size = x.Size,
                     Price = x.Price,
                     Image = x.Image,
-                    Owner = x.Owner.Name,
-                    Buyer = x.Buyer.Name,
-                    Category = x.Category.Name,
-                    Brand = x.Brand.Name,
-                    Tags = x.Tags.Select(x => x.Name),
+                    Owner = x.Owner != null ? x.Owner.Name : null,
+                    Buyer = x.Buyer != null ? x.Buyer.Name : null,
+                    Category = x.Category != null ? x.Category.Name : null,
+                    Brand = x.Brand != null ? x.Brand.Name : null,
+                    Tags = x.Tags!.Select(x => x.Name)!
                 }).ToList();
                 return Result<IEnumerable<ProductDto>>.Success(products);
             }
