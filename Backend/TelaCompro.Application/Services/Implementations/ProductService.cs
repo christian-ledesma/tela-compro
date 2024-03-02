@@ -45,8 +45,16 @@ namespace TelaCompro.Application.Services.Implementations
                     return Result.Failure("Comprador no encontrado");
                 }
 
+                if (buyer.Credits < product.Price)
+                {
+                    return Result.Failure("No dispone de saldo suficiente para comprar este producto");
+                }
+
+                buyer.Credits -= product.Price;
                 product.Buyer = buyer;
+
                 await _productRepository.Update(product);
+                await _userRepository.Update(buyer);
 
                 return Result.Success();
             }

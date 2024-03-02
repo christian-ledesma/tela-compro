@@ -31,5 +31,19 @@ namespace TelaCompro.API.Controllers
             var response = await _userService.Login(request);
             return response;
         }
+
+        [HttpPut]
+        public async Task<Result> Update(UpdateUserDto request)
+        {
+            var response = await _userService.UpdateUser(request);
+            return response;
+        }
+
+        [HttpPost]
+        public async Task<Result> AddCredits(UpdateUserDto request)
+        {
+            var response = await _userService.UpdateUser(request);
+            return response;
+        }
     }
 }

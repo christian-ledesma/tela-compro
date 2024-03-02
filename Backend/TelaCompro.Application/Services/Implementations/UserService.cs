@@ -16,6 +16,28 @@ namespace TelaCompro.Application.Services.Implementations
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
         }
 
+        public async Task<Result> AddCredits(AddUserCreditsDto request)
+        {
+            try
+            {
+                var user = await _userRepository.Get(request.UserId);
+
+                if (user is null)
+                {
+                    return Result.Failure("Usuario no encontrado");
+                }
+
+                user.Credits += request.Credits;
+                await _userRepository.Update(user);
+
+                return Result.Success();
+            }
+            catch (Exception ex)
+            {
+                return Result.Failure(ex.Message);
+            }
+        }
+
         public async Task<Result> Login(LoginDto request)
         {
             try
