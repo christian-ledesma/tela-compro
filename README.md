@@ -4,3 +4,5 @@ This solution contains the backend ([.NET API](https://dotnet.microsoft.com/es-e
 
 ## Introduction
 Tela Compro is an app to buy and sell clothes (used or new!) to other people.
+
+Commit test for Readme
